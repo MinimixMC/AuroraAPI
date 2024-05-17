@@ -2,7 +2,7 @@
 
 Linux:
 ```sh
-go build -buildmode=plugin -o build/example.dll .
+go build -buildmode=plugin -o build/example.so .
 ```
 
 Windows:

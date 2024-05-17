@@ -1,5 +1,9 @@
 package aurora
 
+type PluginInterface interface {
+	Init(p *Plugin)
+}
+
 type PluginVersion struct {
 	Version        string       // The Version tag (e.g. v1.0.0-ALPHA)
 	VersionSupport map[int]bool // What versions of aurora does this plugin support
