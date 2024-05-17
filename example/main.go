@@ -16,6 +16,7 @@ var Plugin aurora.Plugin = aurora.Plugin{
 			1: true,
 		},
 	},
+	MainFunc: MainFunc,
 }
 
 func MainFunc(p *aurora.Plugin) {

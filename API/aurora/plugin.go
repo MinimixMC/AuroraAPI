@@ -2,7 +2,7 @@ package aurora
 
 type PluginInterface interface {
 	Init()
-	Plugin()
+	Plugin() *Plugin
 }
 
 type PluginVersion struct {
