@@ -1,5 +1,7 @@
 package aurora
 
+import "github.com/rs/zerolog/log"
+
 type PluginInterface interface {
 	Init(p *Plugin)
 }
@@ -25,6 +27,8 @@ type Plugin struct {
 	Name    string        // Name of the plugin
 	Author  []string      // Author(s) of the plugin
 	Version PluginVersion // Plugin version info
+}
 
-	Init func(p *Plugin)
+func (p *Plugin) Init() {
+	log.Info().Msgf("%s loaded: %s", p.Name, p.Version.Version)
 }
