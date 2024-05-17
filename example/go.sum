@@ -2,6 +2,8 @@ github.com/MinimixMC/AuroraAPI v0.0.0-20240517062541-6662c8a52750 h1:yuljZ/QDem2
 github.com/MinimixMC/AuroraAPI v0.0.0-20240517062541-6662c8a52750/go.mod h1:JUgw2v0Sdoiirb9J1nuBATw449jYtTeJBk/DAuFoDNU=
 github.com/MinimixMC/AuroraAPI v0.0.0-20240517073142-ab5a62bce5c8 h1:QELTVE8C1sBrHGESnm1UznhE0BkjrEGQAmY8AQR/Gmc=
 github.com/MinimixMC/AuroraAPI v0.0.0-20240517073142-ab5a62bce5c8/go.mod h1:JUgw2v0Sdoiirb9J1nuBATw449jYtTeJBk/DAuFoDNU=
+github.com/MinimixMC/AuroraAPI v0.0.0-20240517073432-96e4d358998d h1:VCWsz7niTYNJR6RgCywtvFCLfol8sQaTemMIgq0pAcY=
+github.com/MinimixMC/AuroraAPI v0.0.0-20240517073432-96e4d358998d/go.mod h1:JUgw2v0Sdoiirb9J1nuBATw449jYtTeJBk/DAuFoDNU=
 github.com/coreos/go-systemd/v22 v22.5.0/go.mod h1:Y58oyj3AT4RCenI/lSvhwexgC+NSVTIJ3seZv2GcEnc=
 github.com/godbus/dbus/v5 v5.0.4/go.mod h1:xhWf0FNVPg57R7Z0UbKHbJfkEywrmjJnf7w5xrFpKfA=
 github.com/mattn/go-colorable v0.1.13 h1:fFA4WZxdEF4tXPZVKMLwD8oUnCTTo08duU7wxecdEvA=
