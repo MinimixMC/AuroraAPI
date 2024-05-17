@@ -3,7 +3,7 @@ package aurora
 import "github.com/rs/zerolog/log"
 
 type PluginInterface interface {
-	Init(p *Plugin)
+	Init()
 }
 
 type PluginVersion struct {
