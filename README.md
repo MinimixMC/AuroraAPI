@@ -1,0 +1,1 @@
+⚠️ Highly experimental plugin system for the Aurora server software
