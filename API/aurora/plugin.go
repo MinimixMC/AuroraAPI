@@ -27,11 +27,11 @@ type Plugin struct {
 	Author  []string      // Author(s) of the plugin
 	Version PluginVersion // Plugin version info
 
-	MainFunc func()
+	MainFunc func(p *Plugin)
 }
 
 func (p *Plugin) Init() {
-	p.MainFunc()
+	p.MainFunc(p)
 }
 
 func (p *Plugin) Plugin() *Plugin {

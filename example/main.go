@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/MinimixMC/AuroraAPI/API/aurora"
+	"github.com/rs/zerolog/log"
 )
 
 var Plugin aurora.Plugin = aurora.Plugin{
@@ -15,6 +16,10 @@ var Plugin aurora.Plugin = aurora.Plugin{
 			1: true,
 		},
 	},
+}
+
+func MainFunc(p *aurora.Plugin) {
+	log.Info().Msgf("%s loaded: %s", p.Name, p.Version.Version)
 }
 
 func main() {}
