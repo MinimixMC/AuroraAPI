@@ -17,7 +17,7 @@ var (
 
 type Ping struct {
 	Status     *status.StatusResponse // The current status response
-	RemoteAddr *net.Addr
+	RemoteAddr net.Addr
 
 	handlers    map[int]aurora.EventHandler // All event handler functions
 	cancellable bool                        // If the event can be cancelled
