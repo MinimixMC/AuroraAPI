@@ -21,8 +21,8 @@ type Ping struct {
 	cancelled   bool                        // If the event is cancelled
 }
 
-func (e *Ping) Subscribe(handler *aurora.EventHandler) int {
-	e.handlers[len(e.handlers)] = *handler
+func (e *Ping) Subscribe(handler aurora.EventHandler) int {
+	e.handlers[len(e.handlers)] = handler
 	return len(e.handlers)
 }
 

@@ -1,15 +1,15 @@
 package aurora
 
-func RegisterEvent(e Event, handler *EventHandler) {
+func RegisterEvent(e Event, handler EventHandler) {
 	e.Subscribe(handler)
 }
 
 type Event interface {
-	Fire() bool                  // Fire the event
-	Subscribe(*EventHandler) int // Subscribe to the event
-	Unsubscribe(int)             // Unsubscribe from the event
-	IsCanceled() bool            // If the event has been cancelled
-	Cancel()                     // Cancels the event
+	Fire() bool                 // Fire the event
+	Subscribe(EventHandler) int // Subscribe to the event
+	Unsubscribe(int)            // Unsubscribe from the event
+	IsCanceled() bool           // If the event has been cancelled
+	Cancel()                    // Cancels the event
 }
 
 type EventHandler func(e Event) Event
@@ -21,8 +21,8 @@ type UnknownEvent struct {
 	cancelled   bool                 // If the event is cancelled
 }
 
-func (e *UnknownEvent) Subscribe(handler *EventHandler) int {
-	e.handlers[len(e.handlers)] = *handler
+func (e *UnknownEvent) Subscribe(handler EventHandler) int {
+	e.handlers[len(e.handlers)] = handler
 	return len(e.handlers)
 }
 
