@@ -3,7 +3,7 @@ module example
 go 1.22.1
 
 require (
-	github.com/MinimixMC/AuroraAPI v0.0.0-20240517074103-eb1a07522f51
+	github.com/MinimixMC/AuroraAPI v0.0.0-20240517074418-8a69e8861ab0
 	github.com/rs/zerolog v1.32.0
 )
 

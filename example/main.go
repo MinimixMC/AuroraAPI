@@ -23,4 +23,8 @@ func MainFunc(p *aurora.Plugin) {
 	log.Info().Msgf("%s loaded: %s", p.Name, p.Version.Version)
 }
 
+func GetPlugin() *aurora.Plugin {
+	return &Plugin
+}
+
 func main() {}
