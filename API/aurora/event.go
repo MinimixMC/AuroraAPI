@@ -1,34 +1,38 @@
 package aurora
 
+func RegisterEvent(e Event, handler *EventHandler) {
+	e.Subscribe(handler)
+}
+
 type Event interface {
-	Fire() bool
-	Subscribe(EventHandler) int
-	Unsubscribe(int)
-	IsCanceled() bool
-	Cancel()
+	Fire() bool                  // Fire the event
+	Subscribe(*EventHandler) int // Subscribe to the event
+	Unsubscribe(int)             // Unsubscribe from the event
+	IsCanceled() bool            // If the event has been cancelled
+	Cancel()                     // Cancels the event
 }
 
 type EventHandler func(e Event) Event
 
 // Example
 type UnknownEvent struct {
-	Handlers    map[int]EventHandler // All event handler functions
+	handlers    map[int]EventHandler // All event handler functions
 	cancellable bool                 // If the event can be cancelled
 	cancelled   bool                 // If the event is cancelled
 }
 
-func (e *UnknownEvent) Subscribe(handler EventHandler) int {
-	e.Handlers[len(e.Handlers)] = handler
-	return len(e.Handlers)
+func (e *UnknownEvent) Subscribe(handler *EventHandler) int {
+	e.handlers[len(e.handlers)] = *handler
+	return len(e.handlers)
 }
 
 func (e *UnknownEvent) Unsubscribe(index int) {
-	delete(e.Handlers, index)
+	delete(e.handlers, index)
 }
 
 // Fires all the registered handle functions and returns if the event was cancelled
 func (e *UnknownEvent) Fire() bool {
-	for _, handle := range e.Handlers {
+	for _, handle := range e.handlers {
 		event := handle(e)
 		if event.IsCanceled() {
 			return true
