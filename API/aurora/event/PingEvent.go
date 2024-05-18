@@ -1,6 +1,8 @@
 package event
 
 import (
+	"net"
+
 	"github.com/MinimixMC/AuroraAPI/API/aurora"
 	"github.com/MinimixMC/AuroraAPI/API/aurora/data/status"
 )
@@ -14,7 +16,8 @@ var (
 )
 
 type Ping struct {
-	Status *status.StatusResponse // The current status response
+	Status     *status.StatusResponse // The current status response
+	RemoteAddr *net.Addr
 
 	handlers    map[int]aurora.EventHandler // All event handler functions
 	cancellable bool                        // If the event can be cancelled
