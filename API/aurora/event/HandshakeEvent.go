@@ -11,7 +11,7 @@ var (
 	// Fired on the initial connection request (handshake with next state 0x02)
 	HandshakeEvent = &Handshake{
 		BaseEvent:   *aurora.NewBaseEvent(true),
-		kickmessage: chat.BuildMessage("Unknown reason"),
+		KickMessage: chat.BuildMessage("Unknown reason"),
 	}
 )
 
@@ -20,7 +20,7 @@ type Handshake struct {
 	Protocol   int32
 	RemoteAddr net.Addr
 
-	kickmessage chat.Message
+	KickMessage chat.Message
 
 	aurora.BaseEvent
 }
@@ -40,6 +40,6 @@ func (e *Handshake) Fire() bool {
 
 // Whether to allow the user to connect or not.
 func (e *Handshake) Disallow(reason chat.Message) {
-	e.kickmessage = reason
+	e.KickMessage = reason
 	e.Cancel()
 }

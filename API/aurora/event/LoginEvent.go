@@ -11,7 +11,7 @@ var (
 	// Fired before the sending the login success packet
 	LoginEvent = &Login{
 		BaseEvent:   *aurora.NewBaseEvent(true),
-		kickmessage: chat.BuildMessage("Unknown reason"),
+		KickMessage: chat.BuildMessage("Unknown reason"),
 	}
 )
 
@@ -22,7 +22,7 @@ type Login struct {
 	Protocol   int32
 	RemoteAddr net.Addr
 
-	kickmessage chat.Message
+	KickMessage chat.Message
 
 	aurora.BaseEvent
 }
@@ -42,6 +42,6 @@ func (e *Login) Fire() bool {
 
 // Whether to allow the user to connect or not.
 func (e *Login) Disallow(reason chat.Message) {
-	e.kickmessage = reason
+	e.KickMessage = reason
 	e.Cancel()
 }

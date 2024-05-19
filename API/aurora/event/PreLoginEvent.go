@@ -9,9 +9,9 @@ import (
 
 var (
 	// Fired when login starts after the initial handshake
-	PreLoginEvent = &Handshake{
+	PreLoginEvent = &PreLogin{
 		BaseEvent:   *aurora.NewBaseEvent(true),
-		kickmessage: chat.BuildMessage("Unknown reason"),
+		KickMessage: chat.BuildMessage("Unknown reason"),
 	}
 )
 
@@ -22,7 +22,7 @@ type PreLogin struct {
 	Protocol   int32
 	RemoteAddr net.Addr
 
-	kickmessage chat.Message
+	KickMessage chat.Message
 
 	aurora.BaseEvent
 }
@@ -42,6 +42,6 @@ func (e *PreLogin) Fire() bool {
 
 // Whether to allow the user to connect or not.
 func (e *PreLogin) Disallow(reason chat.Message) {
-	e.kickmessage = reason
+	e.KickMessage = reason
 	e.Cancel()
 }
