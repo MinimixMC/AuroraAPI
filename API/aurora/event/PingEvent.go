@@ -20,6 +20,15 @@ type Ping struct {
 	aurora.BaseEvent
 }
 
-func (p *Ping) Different() string {
-	return "swag"
+// Executes all the registered handle functions and returns if the event was cancelled
+func (e *Ping) Fire() bool {
+	e.BaseEvent.Mutex.Lock()
+	defer e.BaseEvent.Mutex.Unlock()
+	for _, handle := range e.Handlers {
+		event := handle(e)
+		if event.IsCanceled() {
+			return true
+		}
+	}
+	return false
 }
