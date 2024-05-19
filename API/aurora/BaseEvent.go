@@ -66,7 +66,3 @@ func (e *BaseEvent) IsCanceled() bool {
 	}
 	return false
 }
-
-func (e *BaseEvent) GetEvent() interface{} {
-	return e
-}

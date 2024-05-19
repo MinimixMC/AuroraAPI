@@ -20,6 +20,7 @@ type Ping struct {
 	aurora.BaseEvent
 }
 
-func (p *Ping) GetEvent() interface{} {
-	return p
+// Executes all the registered handle functions and returns if the event was cancelled
+func (p *Ping) Fire() bool {
+	return p.BaseEvent.Fire()
 }
