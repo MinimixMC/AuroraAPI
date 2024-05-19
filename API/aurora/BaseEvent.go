@@ -40,8 +40,8 @@ func (e *BaseEvent) Fire() bool {
 	e.mutex.Lock()
 	defer e.mutex.Unlock()
 	for _, handle := range e.Handlers {
-		handle(e)
-		if e.IsCanceled() {
+		event := handle(e)
+		if event.IsCanceled() {
 			return true
 		}
 	}
