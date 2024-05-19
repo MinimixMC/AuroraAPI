@@ -1,28 +1,26 @@
-package event
+package aurora
 
 import (
 	"sync"
-
-	"github.com/MinimixMC/AuroraAPI/API/aurora"
 )
 
 // Initializes a new BaseEvent with default values
 func NewBaseEvent(cancellable bool) *BaseEvent {
 	return &BaseEvent{
-		Handlers: map[int]aurora.EventHandler{},
+		Handlers: map[int]EventHandler{},
 	}
 }
 
 // Base structure for all events
 type BaseEvent struct {
-	Handlers    map[int]aurora.EventHandler // All event handler functions
-	cancellable bool                        // If the event can be cancelled
-	cancelled   bool                        // If the event is cancelled
-	mutex       sync.Mutex                  // Thread safety
+	Handlers    map[int]EventHandler // All event handler functions
+	cancellable bool                 // If the event can be cancelled
+	cancelled   bool                 // If the event is cancelled
+	mutex       sync.Mutex           // Thread safety
 }
 
 // Register an EventHandler to the event
-func (e *BaseEvent) Register(handler aurora.EventHandler) int {
+func (e *BaseEvent) Register(handler EventHandler) int {
 	e.mutex.Lock()
 	defer e.mutex.Unlock()
 	id := len(e.Handlers)
@@ -42,8 +40,8 @@ func (e *BaseEvent) Fire() bool {
 	e.mutex.Lock()
 	defer e.mutex.Unlock()
 	for _, handle := range e.Handlers {
-		event := handle(e)
-		if event.IsCanceled() {
+		handle(e)
+		if e.IsCanceled() {
 			return true
 		}
 	}

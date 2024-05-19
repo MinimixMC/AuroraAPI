@@ -12,4 +12,4 @@ type Event interface {
 	Cancel()                   // Cancels the event
 }
 
-type EventHandler func(e Event) Event
+type EventHandler func(e *BaseEvent)
