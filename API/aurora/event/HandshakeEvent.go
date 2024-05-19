@@ -8,17 +8,15 @@ import (
 )
 
 var (
-	// Fired before the sending the login success packet
-	LoginEvent = &Login{
+	// Fired on the initial connection request (handshake with next state 0x02)
+	HandshakeEvent = &Handshake{
 		BaseEvent:   *aurora.NewBaseEvent(true),
 		kickmessage: chat.BuildMessage("Unknown reason"),
 	}
 )
 
-// Fired before the sending the login success packet
-type Login struct {
-	Name       string
-	UUID       [16]byte
+// Fired on the initial connection request (handshake with next state 0x02)
+type Handshake struct {
 	Protocol   int32
 	RemoteAddr net.Addr
 
@@ -28,7 +26,7 @@ type Login struct {
 }
 
 // Executes all the registered handle functions and returns if the event was cancelled
-func (e *Login) Fire() bool {
+func (e *Handshake) Fire() bool {
 	e.BaseEvent.Mutex.Lock()
 	defer e.BaseEvent.Mutex.Unlock()
 	for _, handle := range e.Handlers {
@@ -41,7 +39,7 @@ func (e *Login) Fire() bool {
 }
 
 // Whether to allow the user to connect or not.
-func (e *Login) Disallow(reason chat.Message) {
+func (e *Handshake) Disallow(reason chat.Message) {
 	e.kickmessage = reason
 	e.Cancel()
 }

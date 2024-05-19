@@ -8,27 +8,22 @@ import (
 )
 
 var (
-	// Fired before the sending the login success packet
-	LoginEvent = &Login{
-		BaseEvent:   *aurora.NewBaseEvent(true),
-		kickmessage: chat.BuildMessage("Unknown reason"),
+	JoinEvent = &Join{
+		BaseEvent: *aurora.NewBaseEvent(true),
 	}
 )
 
-// Fired before the sending the login success packet
-type Login struct {
-	Name       string
-	UUID       [16]byte
+type Join struct {
 	Protocol   int32
 	RemoteAddr net.Addr
 
-	kickmessage chat.Message
+	message *chat.Message
 
 	aurora.BaseEvent
 }
 
 // Executes all the registered handle functions and returns if the event was cancelled
-func (e *Login) Fire() bool {
+func (e *Join) Fire() bool {
 	e.BaseEvent.Mutex.Lock()
 	defer e.BaseEvent.Mutex.Unlock()
 	for _, handle := range e.Handlers {
@@ -40,8 +35,13 @@ func (e *Login) Fire() bool {
 	return false
 }
 
-// Whether to allow the user to connect or not.
-func (e *Login) Disallow(reason chat.Message) {
-	e.kickmessage = reason
-	e.Cancel()
+// Get's the current join message
+func (e *Join) JoinMessage() *chat.Message {
+	return e.message
+}
+
+// Set's the join message
+// if nil, no join message will be sent
+func (e *Join) SetJoinMessage(message *chat.Message) {
+	e.message = message
 }
