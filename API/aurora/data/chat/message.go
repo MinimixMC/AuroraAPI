@@ -1,5 +1,7 @@
 package chat
 
+import "encoding/json"
+
 type Message struct {
 	Text *string `json:"text,omitempty"`
 
@@ -22,4 +24,9 @@ func BuildMessage(t string) Message {
 		Text: &t,
 	}
 	return message
+}
+
+func (m *Message) JsonString() string {
+	bytes, _ := json.Marshal(m)
+	return string(bytes)
 }
