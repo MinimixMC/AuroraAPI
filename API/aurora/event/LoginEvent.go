@@ -18,3 +18,7 @@ type Login struct {
 
 	aurora.BaseEvent
 }
+
+func (l *Login) GetEvent() interface{} {
+	return l
+}

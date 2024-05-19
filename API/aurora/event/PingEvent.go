@@ -19,3 +19,7 @@ type Ping struct {
 
 	aurora.BaseEvent
 }
+
+func (p *Ping) GetEvent() interface{} {
+	return p
+}

@@ -10,6 +10,7 @@ type Event interface {
 	Unregister(int)            // Unsubscribe from the event
 	IsCanceled() bool          // If the event has been cancelled
 	Cancel()                   // Cancels the event
+	GetEvent() interface{}
 }
 
 type EventHandler func(e Event) Event
