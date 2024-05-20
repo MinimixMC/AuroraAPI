@@ -4,6 +4,10 @@ func RegisterEvent(e Event, handler EventHandler) {
 	e.Register(handler)
 }
 
+func Fire(e Event) {
+	e.Fire()
+}
+
 type Event interface {
 	Fire() bool                // Fire the event
 	Register(EventHandler) int // Subscribe to the event
