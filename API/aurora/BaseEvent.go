@@ -53,3 +53,7 @@ func (e *BaseEvent) IsCanceled() bool {
 	}
 	return false
 }
+
+func (e *BaseEvent) GetBaseEvent() *BaseEvent {
+	return e
+}
