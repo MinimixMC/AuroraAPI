@@ -1,6 +1,6 @@
 ⚠️ Highly experimental
 
-<h1 align="center">AuroraAPI 🌟</h1>
+<h1 align="center">AuroraAPI 🔮</h1>
 
 > An API for the Aurora server software<br />
 
