@@ -1,6 +1,6 @@
 package player
 
-import "github.com/MinimixMC/AuroraAPI/API/aurora/data/types"
+import "github.com/MinimixMC/AuroraAPI/aurora/data/types"
 
 type Player struct {
 	Name       string
