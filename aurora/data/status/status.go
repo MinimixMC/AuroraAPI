@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"encoding/json"
 
-	"github.com/MinimixMC/AuroraAPI/API/aurora/data/chat"
+	"github.com/MinimixMC/AuroraAPI/aurora/data/chat"
 )
 
 type StatusResponse struct {

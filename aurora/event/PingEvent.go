@@ -3,8 +3,8 @@ package event
 import (
 	"net"
 
-	"github.com/MinimixMC/AuroraAPI/API/aurora"
-	"github.com/MinimixMC/AuroraAPI/API/aurora/data/status"
+	"github.com/MinimixMC/AuroraAPI/aurora"
+	"github.com/MinimixMC/AuroraAPI/aurora/data/status"
 )
 
 var (
