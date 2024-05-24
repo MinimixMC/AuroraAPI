@@ -6,4 +6,6 @@ type Player struct {
 	Name       string
 	UUID       [16]byte
 	Properties []types.Property
+
+	Settings *ClientSettings
 }
