@@ -4,7 +4,7 @@ import (
 	"bytes"
 	"crypto/cipher"
 
-	"github.com/MinimixMC/Aurora/protocol/crypto"
+	"github.com/MinimixMC/AuroraAPI/aurora/protocol/crypto"
 )
 
 type Encoder struct {

@@ -7,7 +7,7 @@ import (
 	"fmt"
 	"io"
 
-	"github.com/MinimixMC/Aurora/protocol/crypto"
+	"github.com/MinimixMC/AuroraAPI/aurora/protocol/crypto"
 )
 
 type Reader struct {
